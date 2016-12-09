@@ -1,5 +1,6 @@
 package org.usfirst.frc.team3130.robot;
 
+import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.Button;
 import org.usfirst.frc.team3130.robot.commands.ExampleCommand;
 
@@ -8,6 +9,14 @@ import org.usfirst.frc.team3130.robot.commands.ExampleCommand;
  * interface to the commands and command groups that allow control of the robot.
  */
 public class OI {
+	//Instance Handling
+	private static OI m_pInstance;
+	public static OI GetInstance()
+	{
+		if(m_pInstance == null) m_pInstance = new OI();
+		return m_pInstance;
+	}
+	
     //// CREATING BUTTONS
     // One type of button is a joystick button which is any button on a joystick.
     // You create one by telling it which joystick it's on and which button
@@ -34,5 +43,18 @@ public class OI {
     // Start the command when the button is released  and let it run the command
     // until it is finished as determined by it's isFinished method.
     // button.whenReleased(new ExampleCommand());
+	
+	//Define Input Devices
+	Joystick stickL;
+	Joystick stickR;
+	Joystick gamepad;
+	
+	private OI()
+	{
+		//Initialize Input Devices
+		stickL = new Joystick(0);
+		stickR = new Joystick(1);
+		gamepad = new Joystick(2);
+	}
 }
 
