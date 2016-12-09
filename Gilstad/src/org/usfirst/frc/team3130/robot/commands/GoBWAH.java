@@ -1,7 +1,6 @@
 package org.usfirst.frc.team3130.robot.commands;
 
 import org.usfirst.frc.team3130.robot.OI;
-import org.usfirst.frc.team3130.robot.subsystems.Chassis;
 import org.usfirst.frc.team3130.robot.subsystems.Vroom;
 
 import edu.wpi.first.wpilibj.command.Command;
@@ -24,7 +23,7 @@ public class GoBWAH extends Command {
     	double turnThrottle = (-0.5 * OI.stickR.getRawAxis(3)) + 0.5;
     	
     	//Explicitly turning on Quadratic inputs for drivers, as all other systems will use nonQuadratic
-    	Chassis.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
+    	Vroom.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
     }
 
     // Make this return true when this Command no longer needs to run execute()

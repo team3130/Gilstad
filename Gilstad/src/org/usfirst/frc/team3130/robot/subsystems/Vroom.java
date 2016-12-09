@@ -43,5 +43,10 @@ public class Vroom extends Subsystem {
     public void initDefaultCommand() {
     	setDefaultCommand(new GoBWAH());
     }
+    
+    public static void DriveArcade(double move, double turn, boolean squaredInputs)
+    {
+    	m_drive.arcadeDrive(move, turn, squaredInputs);
+    }
 }
 
