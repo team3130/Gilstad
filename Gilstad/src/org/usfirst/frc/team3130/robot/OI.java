@@ -45,9 +45,9 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	//Define Input Devices
-	static Joystick stickL;
-	static Joystick stickR;
-	static Joystick gamepad;
+	public static Joystick stickL;
+	public static Joystick stickR;
+	public static Joystick gamepad;
 	
 	private OI()
 	{
