@@ -1,11 +1,11 @@
 package org.usfirst.frc.team3130.robot.subsystems;
 
 import org.usfirst.frc.team3130.robot.RobotMap;
-
-import edu.wpi.first.wpilibj.CANTalon;
+import org.usfirst.frc.team3130.robot.commands.GoBWAH;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
+import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 /**
  *
@@ -28,13 +28,20 @@ public class Vroom extends Subsystem {
 	
 	private Vroom() {
 		
-		m_leftMotor = new Talon(RobotMap.CAN_LEFTMOTORFRONT);
-		m_rightMotor = new Talon(RobotMap.CAN_LEFTMOTORREAR);
+		//define objects
+		m_leftMotor = new Talon(RobotMap.PWM_LEFTMOTOR);
+		m_rightMotor = new Talon(RobotMap.PWM_RIGHTMOTOR);
+		m_drive = new RobotDrive(m_leftMotor, m_rightMotor);
+		m_drive.setSafetyEnabled(false);
+		
+		//display stuff on drive station
+		LiveWindow.addActuator("Vroom", "Left Talon", m_leftMotor);
+		LiveWindow.addActuator("Vroom", "Right Talon", m_rightMotor);
 		
 	}
 	
     public void initDefaultCommand() {
-    	
+    	setDefaultCommand(new GoBWAH());
     }
 }
 
