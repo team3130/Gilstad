@@ -19,8 +19,6 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
  */
 public class Robot extends IterativeRobot {
 
-	public static final Vroom vroom = new Vroom();
-
     Command autonomousCommand;
     SendableChooser chooser;
 
