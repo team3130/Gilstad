@@ -26,7 +26,7 @@ public class Vroom extends Subsystem {
     private static Talon m_leftMotor;
 	private static Talon m_rightMotor;
 	
-	private Vroom() {
+	public Vroom() {
 		
 		//define objects
 		m_leftMotor = new Talon(RobotMap.PWM_LEFTMOTOR);
