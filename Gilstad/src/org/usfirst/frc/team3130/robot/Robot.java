@@ -30,7 +30,7 @@ public class Robot extends IterativeRobot {
 		OI.GetInstance();
 		Vroom.GetInstance();
         chooser = new SendableChooser();
-        chooser.addDefault("Default Auto", new Vroom());
+//      chooser.addDefault("Default Auto", new Vroom());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
     }

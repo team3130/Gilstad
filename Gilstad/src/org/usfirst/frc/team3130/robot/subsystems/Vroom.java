@@ -26,13 +26,13 @@ public class Vroom extends Subsystem {
     private static Talon m_leftMotor;
 	private static Talon m_rightMotor;
 	
-	public Vroom() {
-		
+	private Vroom()
+	{	
 		//define objects
 		m_leftMotor = new Talon(RobotMap.PWM_LEFTMOTOR);
 		m_rightMotor = new Talon(RobotMap.PWM_RIGHTMOTOR);
 		m_drive = new RobotDrive(m_leftMotor, m_rightMotor);
-		m_drive.setSafetyEnabled(false);
+		m_drive.setSafetyEnabled(true);
 		
 		//display stuff on drive station
 		LiveWindow.addActuator("Vroom", "Left Talon", m_leftMotor);
