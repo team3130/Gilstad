@@ -4,6 +4,7 @@ import org.usfirst.frc.team3130.robot.subsystems.Cannon;
 
 import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 /**
  *
@@ -30,7 +31,7 @@ public class GoBoom extends Command {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return timer.get() > 0.125;
+        return timer.get() > SmartDashboard.getNumber("Cannon Fire Time",0.5);
     }
 
     // Called once after isFinished returns true
