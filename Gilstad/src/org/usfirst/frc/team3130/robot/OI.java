@@ -1,6 +1,9 @@
 package org.usfirst.frc.team3130.robot;
 
+import org.usfirst.frc.team3130.robot.commands.GoBoom;
+
 import edu.wpi.first.wpilibj.Joystick;
+import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
 /**
  * This class is the glue that binds the controls on the physical operator
@@ -22,12 +25,21 @@ public class OI {
 	public static Joystick stickR;
 	public static Joystick gamepad;
 	
+	//Define User Buttons
+	private static JoystickButton fireCannon;
+	
 	private OI()
 	{
 		//Initialize Input Devices
 		stickL = new Joystick(0);
 		stickR = new Joystick(1);
 		gamepad = new Joystick(2);
+		
+		//Instantiate User Buttons
+		fireCannon = new JoystickButton(stickL, RobotMap.BTN_FIRECANNON);
+		
+		//Map User Buttons
+		fireCannon.whenPressed(new GoBoom());
 	}
 }
 
