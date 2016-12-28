@@ -1,10 +1,13 @@
 package org.usfirst.frc.team3130.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
+import org.usfirst.frc.team3130.robot.commands.*;
 
-/**
- *
- */
+//==========================================
+//motor has a quad encoder
+//make limit switches on the top and bottom
+//==========================================
+
 public class CannonAdjust extends Subsystem {
     
 	//instantiation for our cannon adjuster
@@ -16,7 +19,7 @@ public class CannonAdjust extends Subsystem {
 	    }
 
     public void initDefaultCommand() {
-        
+        setDefaultCommand(new Changle());
     }
 }
 

@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team3130.robot.subsystems.Cannon;
+import org.usfirst.frc.team3130.robot.subsystems.CannonAdjust;
 import org.usfirst.frc.team3130.robot.subsystems.Vroom;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
@@ -32,7 +33,8 @@ public class Robot extends IterativeRobot {
 		OI.GetInstance();
 		Vroom.GetInstance();
 		Cannon.GetInstance();
-        chooser = new SendableChooser();
+		CannonAdjust.GetInstance();
+		chooser = new SendableChooser();
 //      chooser.addDefault("Default Auto", new Vroom());
 //        chooser.addObject("My Auto", new MyAutoCommand());
         SmartDashboard.putData("Auto mode", chooser);
