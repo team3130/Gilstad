@@ -48,5 +48,10 @@ public class Vroom extends Subsystem {
     {
     	m_drive.arcadeDrive(move, turn, squaredInputs);
     }
+    
+    public static void DriveTank(double moveL, double moveR, boolean squaredInputs)
+    {
+    	m_drive.tankDrive(moveL, moveR, squaredInputs);
+    }
 }
 

@@ -14,7 +14,7 @@ public class RobotMap {
 	//Relay Ports
 	public static final int RLY_CANNON = 0;
 	
-	
 	//User Input
 	public static final int BTN_FIRECANNON = 1;
+	public static final int BTN_TOGGLEDRIVE = 7;
 }

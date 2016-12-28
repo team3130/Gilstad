@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3130.robot;
 
-import org.usfirst.frc.team3130.robot.commands.GoBoom;
-
+import org.usfirst.frc.team3130.robot.commands.*;
+import misc.Toggle;
 import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.buttons.JoystickButton;
 
@@ -27,6 +27,7 @@ public class OI {
 	
 	//Define User Buttons
 	private static JoystickButton fireCannon;
+	public static JoystickButton toggleDrive;
 	
 	private OI()
 	{
@@ -37,6 +38,7 @@ public class OI {
 		
 		//Instantiate User Buttons
 		fireCannon = new JoystickButton(stickL, RobotMap.BTN_FIRECANNON);
+		toggleDrive = new JoystickButton(stickL, RobotMap.BTN_TOGGLEDRIVE);
 		
 		//Map User Buttons
 		fireCannon.whenPressed(new GoBoom());

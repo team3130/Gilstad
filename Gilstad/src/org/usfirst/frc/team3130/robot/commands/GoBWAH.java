@@ -1,5 +1,7 @@
 package org.usfirst.frc.team3130.robot.commands;
 
+import misc.Toggle;
+
 import org.usfirst.frc.team3130.robot.OI;
 import org.usfirst.frc.team3130.robot.subsystems.Vroom;
 
@@ -8,6 +10,8 @@ import edu.wpi.first.wpilibj.command.Command;
 
 public class GoBWAH extends Command {
 
+	
+	
     public GoBWAH() {
     	requires(Vroom.GetInstance());
     }
@@ -18,12 +22,24 @@ public class GoBWAH extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	double moveSpeed = -OI.stickL.getY();
-    	double turnSpeed = -OI.stickR.getX();
-    	double turnThrottle = (-0.5 * OI.stickR.getRawAxis(3)) + 0.5;
+    	Toggle<Boolean> toggle = new Toggle(false, true);
     	
-    	//Explicitly turning on Quadratic inputs for drivers, as all other systems will use nonQuadratic
-    	Vroom.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
+    	if(toggle.getStatus()) {
+    		double moveSpeed = -OI.stickL.getY();
+    		double turnSpeed = -OI.stickR.getX();
+    		double turnThrottle = (-0.5 * OI.stickR.getRawAxis(3)) + 0.5;
+    	
+    		//Explicitly turning on Quadratic inputs for drivers, as all other systems will use nonQuadratic
+    		Vroom.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
+    	}
+    	else {
+    		double moveL = -OI.stickL.getY();
+    		double moveR = -OI.stickR.getY();
+    		
+    		Vroom.DriveTank(moveL, moveR, true);
+    	}
+    	
+    	toggle.risingEdge(OI.toggleDrive.get());
     }
 
     // Make this return true when this Command no longer needs to run execute()
