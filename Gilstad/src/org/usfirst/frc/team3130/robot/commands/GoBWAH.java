@@ -11,9 +11,11 @@ import edu.wpi.first.wpilibj.command.Command;
 public class GoBWAH extends Command {
 
 	
+	Toggle<Boolean> toggle;
 	
     public GoBWAH() {
     	requires(Vroom.GetInstance());
+    	toggle = new Toggle<Boolean>(false, true);
     }
 
     // Called just before this Command runs the first time
@@ -22,7 +24,6 @@ public class GoBWAH extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	Toggle<Boolean> toggle = new Toggle(false, true);
     	
     	if(toggle.getStatus()) {
     		double moveSpeed = -OI.stickL.getY();
@@ -39,7 +40,7 @@ public class GoBWAH extends Command {
     		Vroom.DriveTank(moveL, moveR, true);
     	}
     	
-    	toggle.risingEdge(OI.toggleDrive.get());
+    	toggle.toggleStatusOnEdgeChange(OI.stickL.getRawButton(7), Toggle.edgeType.kRisingEdge);
     }
 
     // Make this return true when this Command no longer needs to run execute()

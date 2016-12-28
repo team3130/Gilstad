@@ -27,7 +27,6 @@ public class OI {
 	
 	//Define User Buttons
 	private static JoystickButton fireCannon;
-	public static JoystickButton toggleDrive;
 	
 	private OI()
 	{
@@ -37,8 +36,7 @@ public class OI {
 		gamepad = new Joystick(2);
 		
 		//Instantiate User Buttons
-		fireCannon = new JoystickButton(stickL, RobotMap.BTN_FIRECANNON);
-		toggleDrive = new JoystickButton(stickL, RobotMap.BTN_TOGGLEDRIVE);
+		fireCannon = new JoystickButton(gamepad, RobotMap.BTN_FIRECANNON);
 		
 		//Map User Buttons
 		fireCannon.whenPressed(new GoBoom());
