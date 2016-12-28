@@ -10,9 +10,18 @@ public class RobotMap {
 	//ports for the motors :)
 	public static final int PWM_LEFTMOTOR = 0;
 	public static final int PWM_RIGHTMOTOR = 1;
+	public static final int PWM_CANNON = 2;
 	
 	//Relay Ports
 	public static final int RLY_CANNON = 0;
+	
+	//Encoder values
+	public static final int PWM_ENCODERA = 0;
+	public static final int PWM_ENCODERB = 1;
+	
+	//DIO values
+	public static final int DIO_SWITCH_BOTTOM = 0;//NOT CORRECT
+	public static final int DIO_SWITCH_TOP = 0;//NOT CORRECT
 	
 	//User Input
 	public static final int BTN_FIRECANNON = 6;
