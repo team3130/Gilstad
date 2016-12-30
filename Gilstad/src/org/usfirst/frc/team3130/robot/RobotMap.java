@@ -15,14 +15,12 @@ public class RobotMap {
 	//Relay Ports
 	public static final int RLY_CANNON = 0;
 	
-	//Encoder values
-	public static final int PWM_ENCODERA = 0;
-	public static final int PWM_ENCODERB = 1;
-	
 	//DIO values
-	public static final int DIO_SWITCH_BOTTOM = 0;//NOT CORRECT
-	public static final int DIO_SWITCH_TOP = 0;//NOT CORRECT
+	public static final int DIO_CANNONENCODERa = 0;
+	public static final int DIO_CANNONENCODERb = 1;
+	public static final int DIO_CANNONBOTTOM = 2;
 	
 	//User Input
 	public static final int BTN_FIRECANNON = 6;
+	public static final int AXS_CANNONANGLE = 1;
 }

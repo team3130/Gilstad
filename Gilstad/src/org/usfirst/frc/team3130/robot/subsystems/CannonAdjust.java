@@ -20,8 +20,7 @@ public class CannonAdjust extends PIDSubsystem {
 	private static Encoder m_angleEncoder; 
 	private static DigitalInput m_limitSwitchBottom;
 	
-	//maybe exists, maybe not
-	private static DigitalInput m_limitSwitchTop;
+	private static final double RATIO_TICKSPERINCH = 7*71*Math.PI*(1.9+.05);	//Winch Diamater ~1.9, Rope Radius ~.05
 	
 	//instantiation for our cannon adjuster
 	private static CannonAdjust m_pInstance;
@@ -34,9 +33,10 @@ public class CannonAdjust extends PIDSubsystem {
 	private CannonAdjust() {
 		super("CannonAdjust", 1.0, 0.0, 0.0);
 		m_angleController = new Talon(RobotMap.PWM_CANNON);
-		m_angleEncoder = new Encoder(RobotMap.PWM_ENCODERA, RobotMap.PWM_ENCODERB);
-		m_limitSwitchBottom = new DigitalInput(RobotMap.DIO_SWITCH_BOTTOM);//NOT CORRECT
-		m_limitSwitchTop = new DigitalInput(RobotMap.DIO_SWITCH_TOP);//NOT CORRECT
+		m_angleEncoder = new Encoder(RobotMap.DIO_CANNONENCODERa, RobotMap.DIO_CANNONENCODERb);
+		m_limitSwitchBottom = new DigitalInput(RobotMap.DIO_CANNONBOTTOM);
+		
+		m_angleEncoder.setDistancePerPulse(1.0/RATIO_TICKSPERINCH);
 	}
 	
     public void initDefaultCommand() {
@@ -45,20 +45,32 @@ public class CannonAdjust extends PIDSubsystem {
     
     
     //function to move cannon up or down
-    public static void moveCannon() {
-    	
+    public static void moveCannon(double dir) {
+    	if(m_limitSwitchBottom.get()){
+    		m_angleEncoder.reset();
+    		if(dir < 0) dir = 0;
+    	}
+    	m_angleController.set(dir);
     }
 
 	@Override
 	protected double returnPIDInput() {
-		return 0.0;
+		return m_angleEncoder.get();
 	}
 
 	@Override
 	protected void usePIDOutput(double output) {
-		// TODO Auto-generated method stub
-		
+		moveCannon(output);
 	}
     
+	public static void holdCannon(){
+		GetInstance().getPIDController().setSetpoint(m_angleEncoder.get());
+		GetInstance().getPIDController().enable();
+	}
+	
+	public static void releaseCannon(){
+		GetInstance().getPIDController().disable();
+	}
+	
 }
 

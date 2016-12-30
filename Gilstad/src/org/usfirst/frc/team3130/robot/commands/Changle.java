@@ -1,19 +1,21 @@
 package org.usfirst.frc.team3130.robot.commands;
 
-import edu.wpi.first.wpilibj.Timer;
 import edu.wpi.first.wpilibj.command.Command;
 
+import org.usfirst.frc.team3130.robot.OI;
+import org.usfirst.frc.team3130.robot.RobotMap;
 import org.usfirst.frc.team3130.robot.subsystems.*;
 
 /**
  *
  */
 public class Changle extends Command {
-	
-	
 
+	private static boolean held;
+	
     public Changle() {
         requires(CannonAdjust.GetInstance());
+        held = false;
     }
 
     // Called just before this Command runs the first time
@@ -23,6 +25,16 @@ public class Changle extends Command {
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	double dir = OI.gamepad.getRawAxis(RobotMap.AXS_CANNONANGLE);
+    	if(!held && Math.abs(dir) < .1){
+    		CannonAdjust.holdCannon();
+    		held = true;
+    	}
+    	else{
+    		held = false;
+    		CannonAdjust.releaseCannon();
+    		CannonAdjust.moveCannon(dir);
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()
