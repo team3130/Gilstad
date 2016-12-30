@@ -51,7 +51,7 @@ public class CannonAdjust extends PIDSubsystem {
 
 	@Override
 	protected double returnPIDInput() {
-		
+		return 0.0;
 	}
 
 	@Override
