@@ -6,7 +6,9 @@ package org.usfirst.frc.team3130.robot;
  * floating around.
  */
 public class RobotMap {
-    
+    //CAN ports
+	public static final int CAN_PNMBOARD = 1;
+	
 	//ports for the motors :)
 	public static final int PWM_LEFTMOTOR = 0;
 	public static final int PWM_RIGHTMOTOR = 1;
