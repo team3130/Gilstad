@@ -26,9 +26,11 @@ public class Changle extends Command {
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
     	double dir = OI.gamepad.getRawAxis(RobotMap.AXS_CANNONANGLE);
-    	if(!held && Math.abs(dir) < .1){
-    		CannonAdjust.holdCannon();
-    		held = true;
+    	if(Math.abs(dir) < .1){
+    		if(!held){
+    			CannonAdjust.holdCannon();
+    			held = true;
+    		}
     	}
     	else{
     		held = false;
