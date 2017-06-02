@@ -9,11 +9,11 @@ import org.usfirst.frc.team3130.robot.subsystems.*;
 /**
  *
  */
-public class Changle extends Command {
+public class CannonAngle extends Command {
 
 	private static boolean held;
 	
-    public Changle() {
+    public CannonAngle() {
         requires(CannonAdjust.GetInstance());
         held = false;
     }

@@ -9,7 +9,7 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
 import org.usfirst.frc.team3130.robot.subsystems.Cannon;
 import org.usfirst.frc.team3130.robot.subsystems.CannonAdjust;
-import org.usfirst.frc.team3130.robot.subsystems.Vroom;
+import org.usfirst.frc.team3130.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.smartdashboard.SendableChooser;
 import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
@@ -35,7 +35,7 @@ public class Robot extends IterativeRobot {
     	compressor = new Compressor(RobotMap.CAN_PNMBOARD);
     	compressor.start();
 		OI.GetInstance();
-		Vroom.GetInstance();
+		Chassis.GetInstance();
 		Cannon.GetInstance();
 		CannonAdjust.GetInstance();
 		chooser = new SendableChooser();

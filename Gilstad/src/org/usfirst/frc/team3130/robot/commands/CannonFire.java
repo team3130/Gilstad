@@ -9,11 +9,11 @@ import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 /**
  *
  */
-public class GoBoom extends Command {
+public class CannonFire extends Command {
 
 	Timer timer;
 	
-    public GoBoom() {
+    public CannonFire() {
         requires(Cannon.GetInstance());
         timer = new Timer();
     }

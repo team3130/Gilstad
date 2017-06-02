@@ -39,7 +39,7 @@ public class OI {
 		fireCannon = new JoystickButton(gamepad, RobotMap.BTN_FIRECANNON);
 		
 		//Map User Buttons
-		fireCannon.whenPressed(new GoBoom());
+		fireCannon.whenPressed(new CannonFire());
 	}
 }
 

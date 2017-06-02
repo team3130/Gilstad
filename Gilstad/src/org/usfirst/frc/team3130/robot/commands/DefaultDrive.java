@@ -3,18 +3,18 @@ package org.usfirst.frc.team3130.robot.commands;
 import misc.Toggle;
 
 import org.usfirst.frc.team3130.robot.OI;
-import org.usfirst.frc.team3130.robot.subsystems.Vroom;
+import org.usfirst.frc.team3130.robot.subsystems.Chassis;
 
 import edu.wpi.first.wpilibj.command.Command;
 
 
-public class GoBWAH extends Command {
+public class DefaultDrive extends Command {
 
 	
 	Toggle<Boolean> toggle;
 	
-    public GoBWAH() {
-    	requires(Vroom.GetInstance());
+    public DefaultDrive() {
+    	requires(Chassis.GetInstance());
     	toggle = new Toggle<Boolean>(false, true);
     }
 
@@ -31,13 +31,13 @@ public class GoBWAH extends Command {
     		double turnThrottle = (-0.5 * OI.stickR.getRawAxis(3)) + 0.5;
     	
     		//Explicitly turning on Quadratic inputs for drivers, as all other systems will use nonQuadratic
-    		Vroom.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
+    		Chassis.DriveArcade(moveSpeed, turnSpeed * turnThrottle, true);
     	}
     	else {
     		double moveL = -OI.stickL.getY();
     		double moveR = -OI.stickR.getY();
     		
-    		Vroom.DriveTank(moveL, moveR, true);
+    		Chassis.DriveTank(moveL, moveR, true);
     	}
     	
     	toggle.toggleStatusOnEdgeChange(OI.stickL.getRawButton(7), Toggle.edgeType.kRisingEdge);

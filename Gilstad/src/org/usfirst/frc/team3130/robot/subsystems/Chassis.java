@@ -1,7 +1,7 @@
 package org.usfirst.frc.team3130.robot.subsystems;
 
 import org.usfirst.frc.team3130.robot.RobotMap;
-import org.usfirst.frc.team3130.robot.commands.GoBWAH;
+import org.usfirst.frc.team3130.robot.commands.DefaultDrive;
 import edu.wpi.first.wpilibj.Talon;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Subsystem;
@@ -10,13 +10,13 @@ import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 /**
  *
  */
-public class Vroom extends Subsystem {
+public class Chassis extends Subsystem {
 
 	//instantiation for our driving system
-	private static Vroom m_pInstance;
-    public static Vroom GetInstance()
+	private static Chassis m_pInstance;
+    public static Chassis GetInstance()
     {
-    	if(m_pInstance == null) m_pInstance = new Vroom();
+    	if(m_pInstance == null) m_pInstance = new Chassis();
     	return m_pInstance;
     }
     
@@ -26,7 +26,7 @@ public class Vroom extends Subsystem {
     private static Talon m_leftMotor;
 	private static Talon m_rightMotor;
 	
-	private Vroom()
+	private Chassis()
 	{	
 		//define objects
 		m_leftMotor = new Talon(RobotMap.PWM_LEFTMOTOR);
@@ -41,7 +41,7 @@ public class Vroom extends Subsystem {
 	}
 	
     public void initDefaultCommand() {
-    	setDefaultCommand(new GoBWAH());
+    	setDefaultCommand(new DefaultDrive());
     }
     
     public static void DriveArcade(double move, double turn, boolean squaredInputs)

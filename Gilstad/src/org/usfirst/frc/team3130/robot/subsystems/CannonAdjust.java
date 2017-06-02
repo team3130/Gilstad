@@ -40,7 +40,7 @@ public class CannonAdjust extends PIDSubsystem {
 	}
 	
     public void initDefaultCommand() {
-        setDefaultCommand(new Changle());
+        setDefaultCommand(new CannonAngle());
     }
     
     
